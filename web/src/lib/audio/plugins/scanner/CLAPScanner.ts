@@ -9,6 +9,7 @@
  */
 
 import type { PluginMetadata, PluginScanError } from '../types';
+import { logger } from '$lib/utils/logger';
 import {
   inferCategory,
   inferProcessingType,
@@ -79,7 +80,7 @@ export class CLAPScanner {
     // 4. Query plugin descriptors
     // 5. Extract parameters and features
 
-    console.log(`[CLAPScanner] Would scan directory: ${directory}`);
+    logger.info(`[CLAPScanner] Would scan directory: ${directory}`);
 
     // CLAP is relatively new, so there might be fewer plugins
     // But the API is cleaner than VST3

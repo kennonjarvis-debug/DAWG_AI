@@ -1,0 +1,178 @@
+{
+  ".svelte-kit/generated/server/internal.js": {
+    "file": "internal.js",
+    "name": "internal",
+    "src": ".svelte-kit/generated/server/internal.js",
+    "isEntry": true,
+    "imports": [
+      "_svelte-vendor.js"
+    ]
+  },
+  "_audio-engine.js": {
+    "file": "chunks/audio-engine.js",
+    "name": "audio-engine",
+    "imports": [
+      "_svelte-vendor.js"
+    ]
+  },
+  "_authStore.js": {
+    "file": "chunks/authStore.js",
+    "name": "authStore",
+    "imports": [
+      "_svelte-vendor.js",
+      "_audio-engine.js"
+    ]
+  },
+  "_svelte-vendor.js": {
+    "file": "chunks/svelte-vendor.js",
+    "name": "svelte-vendor",
+    "imports": [
+      "_vendor.js"
+    ]
+  },
+  "_vendor.js": {
+    "file": "chunks/vendor.js",
+    "name": "vendor"
+  },
+  "_voice-control.js": {
+    "file": "chunks/voice-control.js",
+    "name": "voice-control",
+    "imports": [
+      "_svelte-vendor.js"
+    ],
+    "css": [
+      "_app/immutable/assets/voice-control._AoGvv0L.css"
+    ]
+  },
+  "node_modules/@sveltejs/kit/src/runtime/app/server/remote/index.js": {
+    "file": "remote-entry.js",
+    "name": "remote-entry",
+    "src": "node_modules/@sveltejs/kit/src/runtime/app/server/remote/index.js",
+    "isEntry": true,
+    "imports": [
+      "_svelte-vendor.js"
+    ]
+  },
+  "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte": {
+    "file": "entries/fallbacks/error.svelte.js",
+    "name": "entries/fallbacks/error.svelte",
+    "src": "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte",
+    "isEntry": true,
+    "imports": [
+      "_svelte-vendor.js"
+    ]
+  },
+  "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
+    "file": "index.js",
+    "name": "index",
+    "src": "node_modules/@sveltejs/kit/src/runtime/server/index.js",
+    "isEntry": true,
+    "imports": [
+      "_svelte-vendor.js"
+    ]
+  },
+  "src/routes/+layout.svelte": {
+    "file": "entries/pages/_layout.svelte.js",
+    "name": "entries/pages/_layout.svelte",
+    "src": "src/routes/+layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_svelte-vendor.js",
+      "_voice-control.js",
+      "_authStore.js",
+      "_audio-engine.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_layout.BDohk8gk.css"
+    ]
+  },
+  "src/routes/+page.svelte": {
+    "file": "entries/pages/_page.svelte.js",
+    "name": "entries/pages/_page.svelte",
+    "src": "src/routes/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_svelte-vendor.js"
+    ]
+  },
+  "src/routes/daw/+page.svelte": {
+    "file": "entries/pages/daw/_page.svelte.js",
+    "name": "entries/pages/daw/_page.svelte",
+    "src": "src/routes/daw/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_svelte-vendor.js",
+      "_audio-engine.js",
+      "_authStore.js",
+      "_voice-control.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.CDmVHo8c.css"
+    ]
+  },
+  "src/routes/midi-demo/+page.svelte": {
+    "file": "entries/pages/midi-demo/_page.svelte.js",
+    "name": "entries/pages/midi-demo/_page.svelte",
+    "src": "src/routes/midi-demo/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_svelte-vendor.js",
+      "_audio-engine.js",
+      "_voice-control.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.DQ4L24Tb.css"
+    ]
+  },
+  "src/routes/pricing/+page.svelte": {
+    "file": "entries/pages/pricing/_page.svelte.js",
+    "name": "entries/pages/pricing/_page.svelte",
+    "src": "src/routes/pricing/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_svelte-vendor.js",
+      "_voice-control.js"
+    ]
+  },
+  "src/routes/test/components/+page.svelte": {
+    "file": "entries/pages/test/components/_page.svelte.js",
+    "name": "entries/pages/test/components/_page.svelte",
+    "src": "src/routes/test/components/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_svelte-vendor.js",
+      "_voice-control.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.DZI513yF.css"
+    ]
+  },
+  "src/routes/tracks/+page.svelte": {
+    "file": "entries/pages/tracks/_page.svelte.js",
+    "name": "entries/pages/tracks/_page.svelte",
+    "src": "src/routes/tracks/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_svelte-vendor.js",
+      "_voice-control.js",
+      "_audio-engine.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.IpfJrBPc.css"
+    ]
+  },
+  "src/routes/voice-demo/+page.svelte": {
+    "file": "entries/pages/voice-demo/_page.svelte.js",
+    "name": "entries/pages/voice-demo/_page.svelte",
+    "src": "src/routes/voice-demo/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_svelte-vendor.js",
+      "_audio-engine.js",
+      "_voice-control.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.BSflTRUo.css"
+    ]
+  }
+}
