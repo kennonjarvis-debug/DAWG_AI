@@ -25,6 +25,9 @@ import AIFeaturesPanel from '$lib/components/ai/AIFeaturesPanel.svelte';
 import { getAudioEngine } from '$lib/audio';
 
 let isInitializing = $state(true);
+// When autoplay policy blocks WebAudio/Tone.start(),
+// we surface a user-gesture button to continue.
+let needsUserStart = $state(false);
 let error = $state<string | null>(null);
 let showAuthModal = $state(false);
 let showFileUploader = $state(false);
@@ -67,13 +70,28 @@ onMount(async () => {
 		console.log('[DAW] Test mode detected - skipping audio engine initialization');
 		isInitializing = false;
 	} else {
-		try {
-			await appStore.initializeAudioEngine();
-			isInitializing = false;
-		} catch (err) {
-			error = err instanceof Error ? err.message : 'Failed to initialize';
-			isInitializing = false;
-		}
+		// Attempt auto-initialize, but fall back to user gesture if the
+		// browser blocks audio context start (common on Chrome/Safari).
+		let settled = false;
+		appStore
+			.initializeAudioEngine()
+			.then(() => {
+				settled = true;
+				isInitializing = false;
+			})
+			.catch((err) => {
+				settled = true;
+				error = err instanceof Error ? err.message : 'Failed to initialize';
+				isInitializing = false;
+			});
+
+		// After a short timeout, if initialization hasn't settled,
+		// prompt for explicit user interaction.
+		setTimeout(() => {
+			if (!settled) {
+				needsUserStart = true;
+			}
+		}, 1200);
 	}
 
 	// Set up keyboard shortcuts
@@ -286,6 +304,19 @@ function handleAuthSuccess() {
 	// Reinitialize
 	appStore.initializeAudioEngine();
 }
+
+async function handleStartAudio() {
+	// Invoked by a user click; browsers allow audio context start here
+	isInitializing = true;
+	needsUserStart = false;
+	try {
+		await appStore.initializeAudioEngine();
+		isInitializing = false;
+	} catch (err) {
+		error = err instanceof Error ? err.message : 'Failed to initialize';
+		isInitializing = false;
+	}
+}
 </script>
 
 <svelte:head>
@@ -299,6 +330,19 @@ function handleAuthSuccess() {
 		on:signin={handleAuthSuccess}
 		on:signup={handleAuthSuccess}
 	/>
+{:else if needsUserStart}
+	<!-- Browser blocked auto-audio start: ask for a click to continue -->
+	<div class="flex items-center justify-center min-h-screen p-8">
+		<div class="glass-strong rounded-panel p-8 max-w-md text-center">
+			<h2 class="text-2xl font-bold mb-4">Enable Audio</h2>
+			<p class="text-white/70 mb-6">
+				Your browser requires a click to start the audio engine.
+			</p>
+			<Button variant="primary" size="lg" onclick={handleStartAudio}>
+				Start DAW Audio
+			</Button>
+		</div>
+	</div>
 {:else if isInitializing}
 	<div class="flex items-center justify-center min-h-screen">
 		<div class="text-center">
