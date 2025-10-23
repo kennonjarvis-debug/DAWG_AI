@@ -11,6 +11,13 @@
   # - DEEPGRAM_API_KEY
   # See: docs/DEPLOYMENT.md for configuration instructions
 
+# Configure functions to use ESM format
+[functions]
+  node_bundler = "esbuild"
+
+[functions.esbuild]
+  external_node_modules = []
+
 # Security Headers
 [[headers]]
   for = "/*"
