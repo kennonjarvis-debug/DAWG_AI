@@ -8,3 +8,8 @@ packages:
   - 'frontend'
   - 'observatory'
   - 'agents'
+  - 'desktop-app'
+  - 'packages/*'
+  - 'packages/daw-audio'
+  - 'packages/daw-transport'
+  - 'packages/shared-types'
